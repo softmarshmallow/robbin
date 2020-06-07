@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "lib": ["es2016", "esnext.asynciterable"],
+    "baseUrl": ".",
+    "paths": {
+      "*": [
+        "node_modules/",
+        "src/types/*"
+      ]
+    }
+  }
+}
