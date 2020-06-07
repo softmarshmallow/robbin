@@ -1,5 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:words/utils/external_definitions/external_definitions.dart';
+import 'package:words/utils/url_launch/url_launch.dart';
 
 class WordScreen extends StatefulWidget {
   static const routeName = "/word/:id";
@@ -11,6 +13,8 @@ class WordScreen extends StatefulWidget {
 }
 
 class _WordScreenState extends State<WordScreen> {
+  String token = "abash";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,6 +49,10 @@ class _WordScreenState extends State<WordScreen> {
             child: buildIllustrationSection(),
             padding: padding,
           ),
+          Container(
+            child: buildExternalDefinitions(),
+            padding: padding,
+          )
         ],
       ),
     );
@@ -54,7 +62,7 @@ class _WordScreenState extends State<WordScreen> {
     return Row(
       children: [
         Text(
-          "😅 abash",
+          "😅 $token",
           style: Theme.of(context).textTheme.headline2,
           maxLines: 3,
         ),
@@ -124,5 +132,22 @@ class _WordScreenState extends State<WordScreen> {
 
   Widget buildIllustrationSection() {
     return Text("buildIllustrationSection");
+  }
+
+  Widget buildExternalDefinitions() {
+    return Column(
+      children: [
+        FlatButton(
+            onPressed: () {
+              openUrl(ExternalDefinitionUtils.buildOxfordDefinition(token));
+            },
+            child: Text("view oxford dictionary")),
+        FlatButton(
+            onPressed: () {
+              openUrl(ExternalDefinitionUtils.buildGoogleDefinition(token));
+            },
+            child: Text("view google dictionary"))
+      ],
+    );
   }
 }
