@@ -1,4 +1,8 @@
-# WOR.IO
+<img src="./documents/images/logo.png" alt="logo" style="zoom:50%;" />
+
+
+
+# ROBBIN
 
 modern vocabulary leaning app for SAT/GRE students.
 
@@ -15,7 +19,7 @@ modern vocabulary leaning app for SAT/GRE students.
 
 ## app
 
-![mac-os](./documents/images/readme-mac-os-1.png)
+<img src="./documents/images/readme-mac-os-1.png" alt="screenshot" style="zoom:50%;" />
 
 ## engine
 
