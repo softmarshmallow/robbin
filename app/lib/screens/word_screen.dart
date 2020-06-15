@@ -1,10 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:words/utils/external_definitions/external_definitions.dart';
+import 'package:words/utils/routes/routing.dart';
 import 'package:words/utils/url_launch/url_launch.dart';
 
 class WordScreen extends StatefulWidget {
-  static const routeName = "/word/:id";
+  static const routeName = RouteSpecs.WORD_DETAIL_SCREEN;
 
   WordScreen({Key key}) : super(key: key);
 
@@ -18,9 +19,6 @@ class _WordScreenState extends State<WordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("woords"),
-      ),
       body: buildBody(),
     );
   }
@@ -109,10 +107,6 @@ class _WordScreenState extends State<WordScreen> {
                 ..onTap = () => print('Tap Here onTap'),
             )
           ]),
-    );
-    return Text(
-      "cause to be embarrassed; cause to feel self-conscious",
-      style: Theme.of(context).textTheme.subtitle1,
     );
   }
 
