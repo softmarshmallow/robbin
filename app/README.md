@@ -2,6 +2,13 @@
 
 vocabulary apps for SAT/GRE students
 
+## Platforms
+* iOS
+* Android
+* Web [on](https://word-279606.firebaseapp.com/)
+* macOS
+
+
 ## DESIGN
 
 [figma design file](https://www.figma.com/file/HAMQzxHZSHlsLDGZQXTdZg/wor.io?node-id=0%3A1)
