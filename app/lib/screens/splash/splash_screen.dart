@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:words/data/repository/user_repository.dart';
 import 'package:words/screens/word_screen.dart';
 import 'package:words/utils/routes/routing.dart';
 import 'package:words/utils/themes/theme.dart';
@@ -18,6 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
+    UserRepository().signInAnonymously(); // todo migrate to auth bloc
     Future.delayed(SPLASH_DURATION, () {
       endSplash();
     });

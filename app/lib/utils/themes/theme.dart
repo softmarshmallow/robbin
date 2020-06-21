@@ -22,7 +22,8 @@ class ThemeDense {
 
 ThemeData buildTheme(BuildContext context) {
   return ThemeData(
-    primarySwatch: Colors.pink,
+    primarySwatch: Colors.amber,
+    scaffoldBackgroundColor: Colors.yellow,
     visualDensity: VisualDensity.adaptivePlatformDensity,
     textTheme: TextTheme(
       headline1: TextStyle(
