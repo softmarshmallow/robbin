@@ -8,6 +8,10 @@ vocabulary apps for SAT/GRE students
 * Web [on](https://word-279606.firebaseapp.com/)
 * macOS
 
+## Uses firebase authentication. your own firebase project required.
+* ios/Runner/GoogleService-Info.plist
+* android/app/google-services.json
+* macos/Runner/GoogleService-Info.plist
 
 ## DESIGN
 

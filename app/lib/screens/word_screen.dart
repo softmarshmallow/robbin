@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:words/utils/external_definitions/external_definitions.dart';
 import 'package:words/utils/routes/routing.dart';
 import 'package:words/utils/url_launch/url_launch.dart';
+import 'package:words/widgets/drawers/main_drawer.dart';
 
 class WordScreen extends StatefulWidget {
   static const routeName = RouteSpecs.WORD_DETAIL_SCREEN;
@@ -19,14 +20,21 @@ class _WordScreenState extends State<WordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: buildBody(),
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+          buildContentBody(),
+          buildActionSection(),
+        ],
+      ),
+      drawer: MainDrawer(),
     );
   }
 
   final EdgeInsetsGeometry padding =
       const EdgeInsets.symmetric(horizontal: 24, vertical: 16);
 
-  Widget buildBody() {
+  Widget buildContentBody() {
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -144,4 +152,43 @@ class _WordScreenState extends State<WordScreen> {
       ],
     );
   }
+
+  Widget buildActionSection() {
+    return Positioned(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          IconButton(
+              icon: Icon(Icons.help),
+              onPressed: () {
+                markAsUnknown();
+              }),
+          IconButton(
+              icon: Icon(Icons.check),
+              onPressed: () {
+                markAsKnown();
+              }),
+          IconButton(
+              icon: Icon(Icons.navigate_next),
+              onPressed: () {
+                skipToNext();
+              }),
+        ],
+      ),
+      bottom: 24,
+      left: 0,
+      right: 0,
+    );
+  }
+
+  // region actions
+  markAsKnown() {}
+
+  markAsUnknown() {}
+
+  skipToNext() {
+    Navigator.of(context).pushReplacementNamed(WordScreen.routeName);
+  }
+  // endregion actions
+
 }
