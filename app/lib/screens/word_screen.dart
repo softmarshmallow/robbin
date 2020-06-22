@@ -20,6 +20,10 @@ class _WordScreenState extends State<WordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
       body: Stack(
         fit: StackFit.expand,
         children: [
@@ -143,36 +147,43 @@ class _WordScreenState extends State<WordScreen> {
             onPressed: () {
               openUrl(ExternalDefinitionUtils.buildOxfordDefinition(token));
             },
-            child: Text("view oxford dictionary")),
+            child: Text("view on oxford")),
         FlatButton(
             onPressed: () {
               openUrl(ExternalDefinitionUtils.buildGoogleDefinition(token));
             },
-            child: Text("view google dictionary"))
+            child: Text("view on google"))
       ],
     );
   }
 
   Widget buildActionSection() {
     return Positioned(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+      child: Column(
         children: [
-          IconButton(
-              icon: Icon(Icons.help),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(
+                  icon: Icon(Icons.help),
+                  onPressed: () {
+                    showHint();
+                  }),
+              SizedBox(
+                width: 36,
+              ),
+              IconButton(
+                  icon: Icon(Icons.check),
+                  onPressed: () {
+                    markAsKnown();
+                  }),
+            ],
+          ),
+          FlatButton(
               onPressed: () {
-                markAsUnknown();
-              }),
-          IconButton(
-              icon: Icon(Icons.check),
-              onPressed: () {
-                markAsKnown();
-              }),
-          IconButton(
-              icon: Icon(Icons.navigate_next),
-              onPressed: () {
-                skipToNext();
-              }),
+                skip();
+              },
+              child: Text("skip"))
         ],
       ),
       bottom: 24,
@@ -182,13 +193,21 @@ class _WordScreenState extends State<WordScreen> {
   }
 
   // region actions
-  markAsKnown() {}
+  markAsKnown() {
+    loadNext();
+  }
 
-  markAsUnknown() {}
+  showHint() {
+    // todo -> show hint in images, then in 초성 then in, native language
+  }
 
-  skipToNext() {
+  skip() {
+    loadNext();
+  }
+
+  loadNext() {
     Navigator.of(context).pushReplacementNamed(WordScreen.routeName);
   }
-  // endregion actions
+// endregion actions
 
 }

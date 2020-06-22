@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:words/screens/splash/splash_screen.dart';
+import 'package:words/screens/talk_to_us/talk_to_us_screen.dart';
 import 'package:words/screens/word_screen.dart';
 
 class RouteSpecs {
@@ -11,5 +12,6 @@ Map<String, WidgetBuilder> buildRoutes(BuildContext context) {
   return {
     SplashScreen.routeName: (c) => SplashScreen(),
     WordScreen.routeName: (c) => WordScreen(),
+    TalkToUsScreen.routeName: (c) => TalkToUsScreen(),
   };
 }
