@@ -13,6 +13,15 @@ vocabulary apps for SAT/GRE students
 * android/app/google-services.json
 * macos/Runner/GoogleService-Info.plist
 
+
+## initial setup
+running `build_runner` for `.g.dart` generation
+`flutter pub run build_runner build`
+
+or...
+
+`flutter pub run build_runner build --delete-conflicting-outputs`
+
 ## DESIGN
 
 [figma design file](https://www.figma.com/file/HAMQzxHZSHlsLDGZQXTdZg/wor.io?node-id=0%3A1)
