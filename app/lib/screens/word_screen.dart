@@ -1,5 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:words/data/models/word.dart';
+import 'package:words/data/repository/word_repository.dart';
 import 'package:words/utils/external_definitions/external_definitions.dart';
 import 'package:words/utils/routes/routing.dart';
 import 'package:words/utils/url_launch/url_launch.dart';
@@ -7,15 +9,21 @@ import 'package:words/widgets/drawers/main_drawer.dart';
 
 class WordScreen extends StatefulWidget {
   static const routeName = RouteSpecs.WORD_DETAIL_SCREEN;
+  final int index;
 
-  WordScreen({Key key}) : super(key: key);
+  WordScreen({Key key, this.index = 0}) : super(key: key);
 
   @override
   _WordScreenState createState() => _WordScreenState();
 }
 
 class _WordScreenState extends State<WordScreen> {
-  String token = "abash";
+  Word word;
+
+  Future<Word> fetchData() async {
+    word = (await WordRepository().loadAll(context))[widget.index];
+    return word;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +35,16 @@ class _WordScreenState extends State<WordScreen> {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          buildContentBody(),
+          FutureBuilder<Word>(
+            builder: (c, s) {
+              if (s.hasData) {
+                return buildContentBody();
+              } else {
+                return SizedBox.shrink();
+              }
+            },
+            future: fetchData(),
+          ),
           buildActionSection(),
         ],
       ),
@@ -69,10 +86,10 @@ class _WordScreenState extends State<WordScreen> {
   }
 
   Widget buildTokenSection() {
-    return Row(
+    return Wrap(
       children: [
         Text(
-          "😅 $token",
+          "😅 ${word.token}",
           style: Theme.of(context).textTheme.headline2,
           maxLines: 3,
         ),
@@ -98,9 +115,9 @@ class _WordScreenState extends State<WordScreen> {
         Padding(
           padding: EdgeInsets.symmetric(vertical: 8),
         ),
-        Container(
-          child: buildTranslateDescriptionSection(),
-        ),
+//        Container(
+//          child: buildTranslateDescriptionSection(),
+//        ),
       ],
     );
   }
@@ -108,17 +125,21 @@ class _WordScreenState extends State<WordScreen> {
   Widget buildNativeDescriptionSection() {
     var style = Theme.of(context).textTheme.bodyText2;
     return new RichText(
-      text: new TextSpan(
-          text: 'cause to be embarrassed; cause to feel ',
-          style: style,
-          children: [
-            new TextSpan(
-              text: 'self-conscious',
-              style: style.copyWith(fontWeight: FontWeight.bold),
-              recognizer: new TapGestureRecognizer()
-                ..onTap = () => print('Tap Here onTap'),
-            )
-          ]),
+      text: TextSpan(
+        text: word.definition,
+        style: style,
+      ),
+//      text: new TextSpan(
+//          text: 'cause to be embarrassed; cause to feel ',
+//          style: style,
+//          children: [
+//            new TextSpan(
+//              text: 'self-conscious',
+//              style: style.copyWith(fontWeight: FontWeight.bold),
+//              recognizer: new TapGestureRecognizer()
+//                ..onTap = () => print('Tap Here onTap'),
+//            )
+//          ]),
     );
   }
 
@@ -137,7 +158,8 @@ class _WordScreenState extends State<WordScreen> {
   }
 
   Widget buildIllustrationSection() {
-    return Text("buildIllustrationSection");
+//    return Text("buildIllustrationSection");
+    return SizedBox.shrink();
   }
 
   Widget buildExternalDefinitions() {
@@ -145,14 +167,10 @@ class _WordScreenState extends State<WordScreen> {
       children: [
         FlatButton(
             onPressed: () {
-              openUrl(ExternalDefinitionUtils.buildOxfordDefinition(token));
+              openUrl(
+                  ExternalDefinitionUtils.buildOxfordDefinition(word.token));
             },
             child: Text("view on oxford")),
-        FlatButton(
-            onPressed: () {
-              openUrl(ExternalDefinitionUtils.buildGoogleDefinition(token));
-            },
-            child: Text("view on google"))
       ],
     );
   }
@@ -206,7 +224,10 @@ class _WordScreenState extends State<WordScreen> {
   }
 
   loadNext() {
-    Navigator.of(context).pushReplacementNamed(WordScreen.routeName);
+    Navigator.of(context).pushReplacement(MaterialPageRoute(
+        builder: (c) => WordScreen(
+              index: widget.index + 1,
+            )));
   }
 // endregion actions
 

@@ -8,11 +8,13 @@
 #     https://docs.scrapy.org/en/latest/topics/settings.html
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
+FEED_EXPORT_ENCODING = 'utf-8'
 
 BOT_NAME = 'crawler'
 
 SPIDER_MODULES = ['crawler.spiders']
 NEWSPIDER_MODULE = 'crawler.spiders'
+RETRY_HTTP_CODES = [429]
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -55,6 +57,11 @@ ROBOTSTXT_OBEY = True
 #DOWNLOADER_MIDDLEWARES = {
 #    'crawler.middlewares.CrawlerDownloaderMiddleware': 543,
 #}
+
+DOWNLOADER_MIDDLEWARES = {
+    'scrapy.downloadermiddlewares.retry.RetryMiddleware': None,
+    'crawler.middlewares.TooManyRequestsRetryMiddleware': 543,
+}
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
