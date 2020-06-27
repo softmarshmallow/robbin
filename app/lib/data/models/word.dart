@@ -7,6 +7,7 @@ class Word {
   Word({this.token, this.examples});
 
   String token;
+  Srting definition;
   List<WordExample> examples;
 
   factory Word.fromJson(Map<String, dynamic> json) => _$WordFromJson(json);
