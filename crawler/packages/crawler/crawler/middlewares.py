@@ -122,7 +122,7 @@ class TooManyRequestsRetryMiddleware(RetryMiddleware):
             return response
         elif response.status == 429:
             self.crawler.engine.pause()
-            time.sleep(5)
+            time.sleep(60)
             self.crawler.engine.unpause()
             reason = response_status_message(response.status)
             return self._retry(request, reason, spider) or response
