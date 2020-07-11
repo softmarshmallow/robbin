@@ -25,7 +25,8 @@
     "errorhandler": "^1.5.1",
     "axios": "^0.19.2",
     "firebase-admin": "^8.10.0",
-    "body-parser": "^1.19.0"
+    "body-parser": "^1.19.0",
+    "http-status-codes": "^1.4.0"
   },
   "devDependencies": {
     "@types/body-parser": "1.19.0",

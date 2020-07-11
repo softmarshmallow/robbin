@@ -48,7 +48,7 @@ export class UserController extends PrismaDataController<string, UserCreateArgum
         uid?: string
     }) {
         super({
-            pk: props.uid,
+            pk: props?.uid,
             spec: MODEL_SPEC_USER
         });
     }

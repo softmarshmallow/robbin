@@ -8,7 +8,7 @@ export abstract class PrismaDataController<ID, IN extends BaseCreateArgument, OU
     spec: ModelSpec
     uniqueWhere: {}
 
-    constructor(props: {
+    protected constructor(props: {
         pk?: ID
         spec: ModelSpec
     }) {
