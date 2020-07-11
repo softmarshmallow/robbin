@@ -1,0 +1,29 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "UpdateField",
+      "model": "Dictionary",
+      "field": "authorId",
+      "type": "String"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "Profile",
+      "field": "userId",
+      "type": "String"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "UserWordNotation",
+      "field": "userUid",
+      "type": "String"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "User",
+      "field": "uid",
+      "type": "String"
+    }
+  ]
+}

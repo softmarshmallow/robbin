@@ -9,7 +9,7 @@ router.get(`/`, async (req, res) => {
     if (!word) {
         throw new BadRequestError("you have to pass query 'word'");
     }
-    const resp = await LexicoApi.word(word as string);
+    const resp = await LexicoApi.entries(word as string);
     const mapped = {
         word: resp.word,
         senses:resp.results[0].lexicalEntries[0].entries[0].senses

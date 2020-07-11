@@ -3,7 +3,7 @@
 
 datasource postgresql {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url = "***"
 }
 
 generator client {
@@ -47,7 +47,7 @@ model Dictionary {
   url         String  @unique
   // region author
   author      User    @relation(fields: [authorId], references: [uid], name: "author")
-  authorId    String
+  authorId    Int
   @@index([authorId], name: "authorId")
   // endregion author
   words      WordMeta[]
@@ -60,7 +60,7 @@ model Profile {
   bio    String?
   avatar String?
   user   User    @relation(fields: [userId], references: [uid])
-  userId String     @unique
+  userId Int     @unique
 }
 
 enum NotationType {
@@ -74,7 +74,7 @@ model UserWordNotation {
   wordId  String
   type    NotationType
   User    User?        @relation(fields: [userUid], references: [uid])
-  userUid String?
+  userUid Int?
 }
 
 enum UserType {
@@ -85,7 +85,7 @@ enum UserType {
 }
 
 model User {
-  uid                String                @id
+  uid                Int                @id
   email              String             @unique
   name               String
   type               UserType

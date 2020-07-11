@@ -7,4 +7,5 @@ LEXICO_APP_ID=<your app id here>
 LEXICO_APP_KEY=<your app key here>
 ```
 
-[https://od-api.oxforddictionaries.com/api/v2](https://od-api.oxforddictionaries.com/api/v2)
+- [https://od-api.oxforddictionaries.com/api/v2](https://od-api.oxforddictionaries.com/api/v2)
+- [api doc](https://developer.oxforddictionaries.com/documentation)

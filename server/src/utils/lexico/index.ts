@@ -14,16 +14,20 @@ const axios = Axios.create({
     }
 });
 
-const endpoint = "entries"
 const language_code = "en-us"
 
 export class LexicoApi {
-    static async word(t: string): Promise<LexicoResponse> {
-        console.log(process.env.PORT);
-        const resp = await axios.get<LexicoResponse>(`/${endpoint}/${language_code}/${t.toLowerCase()}`, {},);
-        console.log(`code ${resp.status}`)
-        console.log("text \n" + resp.data)
-        console.log("json \n" + JSON.stringify(resp.data, null, 2))
+    static async entries(t: string): Promise<LexicoResponse> {
+        const resp = await axios.get<LexicoResponse>(`/entries/${language_code}/${t.toLowerCase()}`, {},);
+        return resp.data;
+    }
+
+    static async search(q: string) {
+        const resp = await axios.get<LexicoResponse>(`/search/${language_code}/`, {
+            params: {
+                q: q
+            }
+        },);
         return resp.data;
     }
 }

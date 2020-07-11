@@ -1,19 +1,11 @@
-version: '3.3'
+# docker-compose.yml
+version: '3.1'
 services:
-  db:
-    image: mysql:8.0
-    restart: always
-    environment:
-      MYSQL_DATABASE: 'db'
-      MYSQL_USER: 'root'
-      MYSQL_PASSWORD: 'password'
-      MYSQL_ROOT_PASSWORD: 'password'
+  postgres:
+    image: postgres:latest
     ports:
-      - '3306:3306'
-    expose:
-      - '3306'
+      - "5432:5432"
+    env_file:
+      - database.env # configure postgres
     volumes:
-      - database:/var/lib/mysql
-# Names our volume
-volumes:
-  database:
+      - ./data/postgres:/var/lib/postgresql/data
