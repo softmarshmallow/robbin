@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:words/screens/splash/splash_screen.dart';
-import 'package:words/screens/talk_to_us/talk_to_us_screen.dart';
-import 'package:words/screens/word_screen.dart';
+import 'package:robbin/screens/splash/splash_screen.dart';
+import 'package:robbin/screens/talk_to_us/talk_to_us_screen.dart';
+import 'package:robbin/screens/word_screen.dart';
 
 class RouteSpecs {
   static const SPLASH_SCREEN = "/splash";

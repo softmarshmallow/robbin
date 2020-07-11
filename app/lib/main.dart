@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:words/screens/splash/splash_screen.dart';
-import 'package:words/screens/word_screen.dart';
-import 'package:words/utils/routes/routing.dart';
-import 'package:words/utils/themes/theme.dart';
+import 'package:robbin/screens/splash/splash_screen.dart';
+import 'package:robbin/screens/word_screen.dart';
+import 'package:robbin/utils/routes/routing.dart';
+import 'package:robbin/utils/themes/theme.dart';
 
 void main() {
   runApp(App());

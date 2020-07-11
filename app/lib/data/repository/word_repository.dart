@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:words/data/models/word.dart';
+import 'package:robbin/data/models/word.dart';
 
 class WordRepository {
   List<Word> _words;

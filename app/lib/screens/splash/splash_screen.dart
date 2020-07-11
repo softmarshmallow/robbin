@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:words/data/repository/user_repository.dart';
-import 'package:words/screens/word_screen.dart';
-import 'package:words/utils/routes/routing.dart';
-import 'package:words/utils/themes/theme.dart';
+import 'package:robbin/data/repository/user_repository.dart';
+import 'package:robbin/screens/word_screen.dart';
+import 'package:robbin/utils/routes/routing.dart';
+import 'package:robbin/utils/themes/theme.dart';
 
 const SPLASH_DURATION = const Duration(seconds: 2, milliseconds: 800);
 

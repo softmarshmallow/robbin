@@ -1,11 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:words/data/models/word.dart';
-import 'package:words/data/repository/word_repository.dart';
-import 'package:words/utils/external_definitions/external_definitions.dart';
-import 'package:words/utils/routes/routing.dart';
-import 'package:words/utils/url_launch/url_launch.dart';
-import 'package:words/widgets/drawers/main_drawer.dart';
+import 'package:robbin/data/models/word.dart';
+import 'package:robbin/data/repository/word_repository.dart';
+import 'package:robbin/utils/external_definitions/external_definitions.dart';
+import 'package:robbin/utils/routes/routing.dart';
+import 'package:robbin/utils/url_launch/url_launch.dart';
+import 'package:robbin/widgets/drawers/main_drawer.dart';
 
 class WordScreen extends StatefulWidget {
   static const routeName = RouteSpecs.WORD_DETAIL_SCREEN;
