@@ -26,3 +26,8 @@
 
 `npx prisma studio --experimental`
 
+
+## set .env file on project root
+```
+PORT=3000
+```
