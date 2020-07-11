@@ -30,4 +30,11 @@
 ## set .env file on project root
 ```
 PORT=3000
+FIREBASE_DATABASE_URL=
 ```
+
+## set credentials/ folder
+required contents
+- firebase-adminsdk.json.json
+
+[learn more about firebase admin sdk](https://firebase.google.com/docs/admin/setup?authuser=0)
