@@ -6,6 +6,7 @@ import 'package:robbin/utils/external_definitions/external_definitions.dart';
 import 'package:robbin/utils/routes/routing.dart';
 import 'package:robbin/utils/url_launch/url_launch.dart';
 import 'package:robbin/widgets/drawers/main_drawer.dart';
+import 'package:robbin/widgets/modals/register_word_modal.dart';
 
 class WordScreen extends StatefulWidget {
   static const routeName = RouteSpecs.WORD_DETAIL_SCREEN;
@@ -31,6 +32,9 @@ class _WordScreenState extends State<WordScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
+        actions: [
+          IconButton(icon: Icon(Icons.add), onPressed: showRegisterWordModal)
+        ],
       ),
       body: Stack(
         fit: StackFit.expand,
@@ -49,6 +53,13 @@ class _WordScreenState extends State<WordScreen> {
         ],
       ),
       drawer: MainDrawer(),
+    );
+  }
+
+  showRegisterWordModal() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+          builder: (c) => RegisterWordModal(), fullscreenDialog: true),
     );
   }
 

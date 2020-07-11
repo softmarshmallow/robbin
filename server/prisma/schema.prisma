@@ -53,6 +53,7 @@ model Dictionary {
   words      WordMeta[]
   sharedWith User[]     @relation("sharedWith")
   public     Boolean    @default(false)
+  createdAt          DateTime           @default(now())
 }
 
 model Profile {
@@ -75,6 +76,7 @@ model UserWordNotation {
   type    NotationType
   User    User?        @relation(fields: [userUid], references: [uid])
   userUid String?
+  createdAt          DateTime           @default(now())
 }
 
 enum UserType {

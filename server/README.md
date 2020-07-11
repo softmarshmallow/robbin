@@ -38,3 +38,8 @@ required contents
 - firebase-adminsdk.json.json
 
 [learn more about firebase admin sdk](https://firebase.google.com/docs/admin/setup?authuser=0)
+
+
+## RUN
+
+`yarn run dev`
