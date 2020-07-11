@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:robbin/screens/blogs/blog_home_screen.dart';
 import 'package:robbin/screens/demo/demo_home_screen.dart';
 import 'package:robbin/screens/talk_to_us/talk_to_us_screen.dart';
 
@@ -32,6 +33,12 @@ class MainDrawer extends StatelessWidget {
               title: Text("talk to us"),
               onTap: () {
                 Navigator.of(context).pushNamed(TalkToUsScreen.routeName);
+              },
+            ),
+            ListTile(
+              title: Text("blog"),
+              onTap: () {
+                Navigator.of(context).pushNamed(BlogHomeScreen.routeName);
               },
             ),
             ListTile(
