@@ -73,6 +73,9 @@ dependencies:
   firebase_auth: ^0.16.1
   # endregion firebase
 
+  # TTS / STT
+  speech_to_text: ^2.3.0
+
 
 dev_dependencies:
   flutter_test:
