@@ -43,8 +43,8 @@ app.get('/docs/swagger.json', (req, res) => {
 
 // only use in development
 if (process.env.NODE_ENV === 'development') {
-    app.use(errorhandler())
 }
+app.use(errorhandler())
 
 app.listen(process.env.PORT, () =>
     console.log(`Server is running on http://localhost:${process.env.PORT}`),
