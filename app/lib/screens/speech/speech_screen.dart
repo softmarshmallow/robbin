@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:robbin/utils/routes/routing.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
@@ -12,6 +13,8 @@ class SpeechScreen extends StatefulWidget {
 }
 
 class _SpeechScreenState extends State<SpeechScreen> {
+  final AudioPlayer audioPlayer = AudioPlayer();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +27,7 @@ class _SpeechScreenState extends State<SpeechScreen> {
     );
   }
 
-  String result = "listening..";
+  String display = "listening..";
   bool listening = false;
 
   Widget buildBody() {
@@ -32,9 +35,13 @@ class _SpeechScreenState extends State<SpeechScreen> {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
-          result,
-          style: Theme.of(context).textTheme.headline1,
+        Container(
+          child: Text(
+            display,
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.headline1,
+          ),
+          padding: EdgeInsets.all(24),
         ),
         if (!listening)
           IconButton(icon: Icon(Icons.mic), onPressed: startSpeech),
@@ -42,6 +49,11 @@ class _SpeechScreenState extends State<SpeechScreen> {
           IconButton(icon: Icon(Icons.stop), onPressed: stopSpeech),
       ],
     );
+  }
+
+  initState() {
+    startSpeech();
+    super.initState();
   }
 
   stt.SpeechToText speech;
@@ -52,10 +64,20 @@ class _SpeechScreenState extends State<SpeechScreen> {
     }
     setState(() {
       listening = false;
+      if (display == "listening..") {
+        display = "Hmm.. \nI didn't get that";
+      }
     });
   }
 
   startSpeech() async {
+    setState(() {
+      display = "listening..";
+    });
+
+    // play sound
+    audioPlayer.play("", isLocal: true);
+
     speech = stt.SpeechToText();
     bool available = await speech.initialize(onStatus: (s) {
       print(s);
@@ -83,7 +105,7 @@ class _SpeechScreenState extends State<SpeechScreen> {
             if (r.finalResult) {
               stopSpeech();
               setState(() {
-                result = r.recognizedWords;
+                display = r.recognizedWords;
               });
             } else {
               var text = "";
@@ -91,7 +113,7 @@ class _SpeechScreenState extends State<SpeechScreen> {
                 text += "${element.recognizedWords}";
               });
               setState(() {
-                result = text;
+                display = text;
               });
               print("result : ${r}");
             }

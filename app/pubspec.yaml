@@ -75,6 +75,7 @@ dependencies:
 
   # TTS / STT
   speech_to_text: ^2.3.0
+  audioplayers: ^0.15.1
 
 
 dev_dependencies:

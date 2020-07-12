@@ -12,7 +12,7 @@ class _RegisterWordModalState extends State<RegisterWordModal> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Icon(Icons.add),
+        elevation: 0,
       ),
       body: buildBody(),
     );
@@ -35,7 +35,9 @@ class _RegisterWordModalState extends State<RegisterWordModal> {
     return TextField(
       style: Theme.of(context).textTheme.headline2,
       cursorColor: Theme.of(context).cursorColor,
+      autofocus: true,
       decoration: InputDecoration(
+        hintText: "type a word",
         focusColor: Colors.transparent,
         border: InputBorder.none,
         focusedBorder: InputBorder.none,
