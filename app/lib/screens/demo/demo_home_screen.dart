@@ -22,7 +22,7 @@ class _DemoHomeScreenState extends State<DemoHomeScreen> {
   }
 
   List<DemoData> demos = [
-    DemoData(name: "speech to text", route: RouteSpecs.DEMO_STT_SCREEN),
+    DemoData(name: "speech to text", route: RouteSpecs.STT_SCREEN),
     DemoData(name: "apple pencil", route: RouteSpecs.DEMO_APPLE_PENCIL),
   ];
 

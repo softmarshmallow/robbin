@@ -1,7 +1,7 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:robbin/data/models/word.dart';
 import 'package:robbin/data/repository/word_repository.dart';
+import 'package:robbin/screens/demo/demo.dart';
 import 'package:robbin/utils/external_definitions/external_definitions.dart';
 import 'package:robbin/utils/routes/routing.dart';
 import 'package:robbin/utils/url_launch/url_launch.dart';
@@ -33,7 +33,8 @@ class _WordScreenState extends State<WordScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
-          IconButton(icon: Icon(Icons.add), onPressed: showRegisterWordModal)
+          IconButton(icon: Icon(Icons.add), onPressed: showRegisterWordModal),
+          IconButton(icon: Icon(Icons.mic), onPressed: showSttModal),
         ],
       ),
       body: Stack(
@@ -60,6 +61,13 @@ class _WordScreenState extends State<WordScreen> {
     Navigator.of(context).push(
       MaterialPageRoute(
           builder: (c) => RegisterWordModal(), fullscreenDialog: true),
+    );
+  }
+
+  showSttModal() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+          builder: (c) => SpeechScreen(), fullscreenDialog: true),
     );
   }
 

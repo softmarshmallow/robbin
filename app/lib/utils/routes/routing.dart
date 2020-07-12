@@ -9,9 +9,9 @@ class RouteSpecs {
   static const SPLASH_SCREEN = "/splash";
   static const WORD_DETAIL_SCREEN = "/word/:id";
   static const BLOGS_HOME_SCREEN = "/blogs";
+  static const STT_SCREEN = "/stt";
 
   // region demo
-  static const DEMO_STT_SCREEN = "/demo/stt";
   static const DEMO_HOME_SCREEN = "/demo/home";
   static const DEMO_APPLE_PENCIL = "/demo/apple-pencil";
 // endregion demo
@@ -26,7 +26,7 @@ Map<String, WidgetBuilder> buildRoutes(BuildContext context) {
 
     // region demo
     DemoHomeScreen.routeName: (c) => DemoHomeScreen(),
-    SttDemoScreen.routeName: (c) => SttDemoScreen(),
+    SpeechScreen.routeName: (c) => SpeechScreen(),
     ApplePencilDemoScreen.routeName: (c) => ApplePencilDemoScreen(),
     // endregion demo
   };
