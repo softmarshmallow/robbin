@@ -1,0 +1,1 @@
+https://rapidapi.com/dpventures/api/wordsapi

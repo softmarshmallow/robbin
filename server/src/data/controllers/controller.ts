@@ -3,7 +3,7 @@ import {ModelSpec} from "../../specs/model";
 
 export const prisma = new PrismaClient()
 
-export abstract class PrismaDataController<ID, IN extends BaseCreateArgument, OUT, DETAILED> {
+export abstract class PrismaDataController<ID, ARG extends BaseCreateArgument, OUT, DETAILED> {
     pk: ID
     spec: ModelSpec
     uniqueWhere: {}
@@ -22,7 +22,7 @@ export abstract class PrismaDataController<ID, IN extends BaseCreateArgument, OU
         // endregion build unique where
     }
 
-    async create(input: IN): Promise<OUT> {
+    async create(input: ARG): Promise<OUT | DETAILED> {
         const created = await prisma[this.spec.singular].create({
             data: input
         })
@@ -30,7 +30,15 @@ export abstract class PrismaDataController<ID, IN extends BaseCreateArgument, OU
         return created;
     }
 
-    abstract update(input: any)
+    abstract update(input: ARG): Promise<OUT | DETAILED>
+
+    async put(input: ARG): Promise<OUT | DETAILED> {
+        if (await this.exists()) {
+            return await this.update(input)
+        } else {
+            return await this.create(input)
+        }
+    }
 
     async delete() {
         const deleted = await prisma[this.spec.singular].delete({
@@ -51,6 +59,19 @@ export abstract class PrismaDataController<ID, IN extends BaseCreateArgument, OU
     abstract fetchSingleDetailed()
 
     abstract fetchSingleCustom()
+
+    /// exists query is not supported yet.
+    /// for further information & tracking visit https://github.com/prisma/prisma-client-js/issues/703
+    async exists(): Promise<boolean> {
+        try {
+            const counts = await prisma.user.count({
+                where: this.uniqueWhere
+            })
+            return counts > 0;
+        } catch (e) {
+            return false;
+        }
+    }
 
     fetchQueried() {
         throw Error()

@@ -1,0 +1,1 @@
+https://rapidapi.com/community/api/urban-dictionary
