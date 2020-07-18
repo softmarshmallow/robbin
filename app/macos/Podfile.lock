@@ -1,4 +1,6 @@
 PODS:
+  - audioplayers (0.0.1):
+    - FlutterMacOS
   - Firebase/Auth (6.27.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 6.6.0)
@@ -54,6 +56,9 @@ PODS:
     - nanopb/encode (= 1.30905.0)
   - nanopb/decode (1.30905.0)
   - nanopb/encode (1.30905.0)
+  - path_provider (0.0.1)
+  - path_provider_macos (0.0.1):
+    - FlutterMacOS
   - PromisesObjC (1.2.9)
   - shared_preferences (0.0.1)
   - shared_preferences_macos (0.0.1):
@@ -63,9 +68,12 @@ PODS:
     - FlutterMacOS
 
 DEPENDENCIES:
+  - audioplayers (from `Flutter/ephemeral/.symlinks/plugins/audioplayers/macos`)
   - firebase_auth (from `Flutter/ephemeral/.symlinks/plugins/firebase_auth/macos`)
   - firebase_core (from `Flutter/ephemeral/.symlinks/plugins/firebase_core/macos`)
   - FlutterMacOS (from `Flutter/ephemeral/.symlinks/flutter/darwin-x64`)
+  - path_provider (from `Flutter/ephemeral/.symlinks/plugins/path_provider/macos`)
+  - path_provider_macos (from `Flutter/ephemeral/.symlinks/plugins/path_provider_macos/macos`)
   - shared_preferences (from `Flutter/ephemeral/.symlinks/plugins/shared_preferences/macos`)
   - shared_preferences_macos (from `Flutter/ephemeral/.symlinks/plugins/shared_preferences_macos/macos`)
   - url_launcher (from `Flutter/ephemeral/.symlinks/plugins/url_launcher/macos`)
@@ -85,12 +93,18 @@ SPEC REPOS:
     - PromisesObjC
 
 EXTERNAL SOURCES:
+  audioplayers:
+    :path: Flutter/ephemeral/.symlinks/plugins/audioplayers/macos
   firebase_auth:
     :path: Flutter/ephemeral/.symlinks/plugins/firebase_auth/macos
   firebase_core:
     :path: Flutter/ephemeral/.symlinks/plugins/firebase_core/macos
   FlutterMacOS:
     :path: Flutter/ephemeral/.symlinks/flutter/darwin-x64
+  path_provider:
+    :path: Flutter/ephemeral/.symlinks/plugins/path_provider/macos
+  path_provider_macos:
+    :path: Flutter/ephemeral/.symlinks/plugins/path_provider_macos/macos
   shared_preferences:
     :path: Flutter/ephemeral/.symlinks/plugins/shared_preferences/macos
   shared_preferences_macos:
@@ -101,6 +115,7 @@ EXTERNAL SOURCES:
     :path: Flutter/ephemeral/.symlinks/plugins/url_launcher_macos/macos
 
 SPEC CHECKSUMS:
+  audioplayers: 882556ed7be47c58b26f1098177c7e814d8a1f2a
   Firebase: fc4cbf6f1592636431821ef9a3c557e4dfd9f268
   firebase_auth: 15b93f75e686d46ce4fc4a4328544764701168d3
   firebase_core: b77314bf4bfacf4fb7253ce9bcdd39eb1cff9348
@@ -113,6 +128,8 @@ SPEC CHECKSUMS:
   GoogleUtilities: 39530bc0ad980530298e9c4af8549e991fd033b1
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
+  path_provider: e0848572d1d38b9a7dd099e79cf83f5b7e2cde9f
+  path_provider_macos: a0a3fd666cb7cd0448e936fb4abad4052961002b
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
   shared_preferences: 9fec34d1bd906196a4da48fcf6c3ad521cc00b8d
   shared_preferences_macos: 480ce071d0666e37cef23fe6c702293a3d21799e

@@ -21,10 +21,23 @@
   <!-- This script installs service_worker.js to provide PWA functionality to
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->
+
+  <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-auth.js"></script>
+  <script src="./credentials/firebase.config.js"></script>
+
+  <script type="application/javascript">
+    firebase.initializeApp(firebaseConfig)
+    firebase.analytics()
+  </script>
+
+
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
         navigator.serviceWorker.register('flutter_service_worker.js');
+        // navigator.serviceWorker.register("firebase-init.js");
       });
     }
   </script>

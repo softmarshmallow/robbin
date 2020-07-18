@@ -16,6 +16,7 @@ class _BlogHomeScreenState extends State<BlogHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return WebView(
+      javascriptMode: JavascriptMode.unrestricted,
       initialUrl: ROBBIN_WEB_HOST,
     );
   }
