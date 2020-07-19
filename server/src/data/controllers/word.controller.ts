@@ -8,5 +8,6 @@ class WordController extends PrismaDataController<number, any, any, any> {
     }
 
     update(input: any) {
+        return null;
     }
 }

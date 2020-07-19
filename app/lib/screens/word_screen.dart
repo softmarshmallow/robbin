@@ -66,8 +66,7 @@ class _WordScreenState extends State<WordScreen> {
 
   showSttModal() {
     Navigator.of(context).push(
-      MaterialPageRoute(
-          builder: (c) => SpeechScreen(), fullscreenDialog: true),
+      MaterialPageRoute(builder: (c) => SpeechScreen(), fullscreenDialog: true),
     );
   }
 
@@ -142,12 +141,16 @@ class _WordScreenState extends State<WordScreen> {
   }
 
   Widget buildNativeDescriptionSection() {
-    var style = Theme.of(context).textTheme.bodyText2;
-    return new RichText(
-      text: TextSpan(
-        text: word.definition,
-        style: style,
-      ),
+    var style = Theme.of(context).textTheme.headline4;
+    return new Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Icon(Icons.format_quote),
+        RichText(
+          text: TextSpan(
+            text: word.definition,
+            style: style,
+          ),
 //      text: new TextSpan(
 //          text: 'cause to be embarrassed; cause to feel ',
 //          style: style,
@@ -159,6 +162,8 @@ class _WordScreenState extends State<WordScreen> {
 //                ..onTap = () => print('Tap Here onTap'),
 //            )
 //          ]),
+        )
+      ],
     );
   }
 
@@ -196,32 +201,43 @@ class _WordScreenState extends State<WordScreen> {
 
   Widget buildActionSection() {
     return Positioned(
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              IconButton(
-                  icon: Icon(Icons.help),
-                  onPressed: () {
-                    showHint();
-                  }),
-              SizedBox(
-                width: 36,
-              ),
-              IconButton(
-                  icon: Icon(Icons.check),
-                  onPressed: () {
-                    markAsKnown();
-                  }),
-            ],
-          ),
-          FlatButton(
-              onPressed: () {
-                skip();
-              },
-              child: Text("skip"))
-        ],
+      child: Align(
+        alignment: Alignment.bottomCenter,
+       child: Container(
+         padding: EdgeInsets.all(16),
+         decoration: BoxDecoration(
+           borderRadius: BorderRadius.all(Radius.circular(32)),
+           color: Theme.of(context).colorScheme.primary,
+           boxShadow: [BoxShadow(
+             color: Colors.black.withOpacity(0.1),// Theme.of(context).primaryColor,
+             blurRadius: 16,
+           )]
+         ),
+         child: Column(
+           mainAxisSize: MainAxisSize.min,
+           children: [
+             Row(
+               mainAxisSize: MainAxisSize.min,
+               mainAxisAlignment: MainAxisAlignment.center,
+               children: [
+                 IconButton(
+                     icon: Icon(Icons.help),
+                     onPressed: () {
+                       showHint();
+                     }),
+                 SizedBox(
+                   width: 36,
+                 ),
+                 IconButton(
+                     icon: Icon(Icons.check),
+                     onPressed: () {
+                       markAsKnown();
+                     }),
+               ],
+             ),
+           ],
+         ),
+       ),
       ),
       bottom: 24,
       left: 0,
