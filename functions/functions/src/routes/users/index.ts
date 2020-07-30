@@ -1,11 +1,10 @@
 import * as express from "express";
 
-import {router as signupRouter} from "./signup";
-import {entryAuthMiddleware} from "../../middlewares/auth.middleware";
+import { router as signupRouter } from "./signup";
 
 const router = express.Router();
 
-router.use(`/signup`, entryAuthMiddleware, signupRouter);
+router.use(`/signup`, signupRouter);
 
 export {
     router

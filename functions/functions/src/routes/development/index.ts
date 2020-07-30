@@ -3,7 +3,7 @@ import { LexicoApi } from "lexico-node";
 import { errors } from "@bridged.io/express-response"
 const router = express.Router();
 
-router.get(`/`, async (req, res) => {
+router.get(`/word`, async (req, res) => {
     const { word } = req.query
     if (!word) {
         throw new errors.request.BadRequestError("you have to pass query 'word'");
