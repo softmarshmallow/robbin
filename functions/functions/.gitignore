@@ -6,3 +6,6 @@
 typings/
 
 node_modules/
+
+## yarn & npm
+package-lock.json
