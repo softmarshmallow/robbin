@@ -6,7 +6,9 @@
     "outDir": "lib",
     "sourceMap": true,
     "strict": false,
-    "target": "es2017"
+    "target": "es6",
+    "experimentalDecorators": true,
+    "downlevelIteration": true
   },
   "compileOnSave": true,
   "include": [

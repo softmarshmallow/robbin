@@ -3,6 +3,13 @@ import * as admin from 'firebase-admin';
 import * as express from 'express';
 import * as bodyParser from "body-parser";
 import { router } from "./routes"
+import { config } from "dotenv"
+import { resolve } from "path"
+
+
+// set .env
+config({ path: resolve(__dirname, "../.env") });
+
 //initialize firebase inorder to access its services
 admin.initializeApp(functions.config().firebase);
 
@@ -28,3 +35,9 @@ app.use(router)
 
 //define google cloud function name
 export const api = functions.https.onRequest(main);
+
+if (process.env.NODE_ENV === 'development') {
+    main.listen(process.env.PORT, () =>
+        console.log(`Server is running on http://localhost:${process.env.PORT}`),
+    );
+}
