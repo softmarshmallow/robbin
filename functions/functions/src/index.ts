@@ -1,5 +1,4 @@
 import * as functions from 'firebase-functions';
-import * as admin from 'firebase-admin';
 import * as express from 'express';
 import * as bodyParser from "body-parser";
 import { router } from "./routes"
@@ -11,7 +10,6 @@ import { resolve } from "path"
 config({ path: resolve(__dirname, "../.env") });
 
 //initialize firebase inorder to access its services
-admin.initializeApp(functions.config().firebase);
 
 //initialize express server
 const app = express();
@@ -28,7 +26,7 @@ main.use(bodyParser.urlencoded({ extended: false }));
 
 
 app.get(`/`, (req, res) => {
-    res.json({ "heelooow": "world" })
+    res.json({ "heelooow": "world", "version": "v2" })
 })
 app.use(router)
 

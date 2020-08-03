@@ -4,7 +4,7 @@
 .idea
 # Typescript v1 declaration files
 typings/
-
+lib/
 node_modules/
 
 ## yarn & npm
