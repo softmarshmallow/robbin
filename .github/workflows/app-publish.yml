@@ -3,22 +3,41 @@ on:
   push:
     branches:
       - master
+    paths:
+      - 'app'
+      - '.github/workflows/app**.yml'
 jobs:
   build:
     name: Build Web
     env:
       my_secret: ${{secrets.commit_secret}}
+      firebase_config_js_content: ${{secrets.FLUTTER_WEB_FIREBASE_CONFIG_JS_CONTENT}}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - uses: subosito/flutter-action@v1
         with:
           channel: 'dev'
-      - run: cd app
       - run: flutter config --enable-web
-      - run: flutter pub get
-      - run: flutter build web --release
-      - run: |
+      - name: pub get
+        working-directory: app
+        run: flutter pub get
+      - name: make credentials
+        run: |
+          'touch firebase.config.js'
+          'echo "$FBCJS_CONTENT" > firebase.config.js'
+        shell: bash
+        env:
+          FBCJS_CONTENT: ${{secrets.FLUTTER_WEB_FIREBASE_CONFIG_JS_CONTENT}}
+        working-directory: app/web/credentials
+      - name: build web
+        working-directory: app      
+        run: |
+          flutter pub run build_runner build --delete-conflicting-outputs
+          flutter build web --release
+      - name: deploy
+        working-directory: app        
+        run: |
           cd build/web
           git init
           # type configurations: your user.email and user.name followed lines 
