@@ -8,6 +8,7 @@ jobs:
     name: Build Web
     env:
       my_secret: ${{secrets.commit_secret}}
+      firebase_config_js_content: ${{secrets.FLUTTER_WEB_FIREBASE_CONFIG_JS_CONTENT}}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -23,7 +24,7 @@ jobs:
         run: |
           cd app
           flutter pub run build_runner build --delete-conflicting-outputs
-          echo ${{FLUTTER_WEB_FIREBASE_CONFIG_JS_CONTENT}} > web/credentials/firebase.config.js
+          echo ${{secrets.FLUTTER_WEB_FIREBASE_CONFIG_JS_CONTENT}} > web/credentials/firebase.config.js
           flutter build web --release
       - name: deploy
         run: |
