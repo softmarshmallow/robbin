@@ -24,7 +24,7 @@ jobs:
         run: flutter pub get
       - name: make credentials
         run: |
-          'touch firebase.config.js'
+          touch firebase.config.js
           'echo "$FBCJS_CONTENT" > firebase.config.js'
         shell: bash
         env:
