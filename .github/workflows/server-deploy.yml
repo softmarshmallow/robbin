@@ -19,4 +19,3 @@ jobs:
           heroku_app_name: "robbin-service" # https://dashboard.heroku.com/apps/robbin-service
           heroku_email: "woojoo@softmarshmallow.com"
           appdir: server
-          procfile: 'web: npm start'
