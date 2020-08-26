@@ -15,12 +15,15 @@ jobs:
         with:
           channel: 'dev'
       - run: flutter config --enable-web
-      - run: flutter pub get
+      - run: |
+          cd app
+          flutter pub get
       - run: |
           cd app
           flutter build web --release
       - run: |
-          cd app/build/web
+          cd app
+          cd build/web
           git init
           # type configurations: your user.email and user.name followed lines 
           # git config --global user.email your_email 
