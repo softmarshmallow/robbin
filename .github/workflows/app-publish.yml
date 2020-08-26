@@ -27,6 +27,7 @@ jobs:
         run: |
           touch firebase.config.js
           echo "$FBCJS_CONTENT" > firebase.config.js
+          ls
         shell: bash
         env:
           FBCJS_CONTENT: ${{secrets.FLUTTER_WEB_FIREBASE_CONFIG_JS_CONTENT}}
