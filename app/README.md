@@ -12,6 +12,7 @@ vocabulary apps for SAT/GRE students
 * ios/Runner/GoogleService-Info.plist
 * android/app/google-services.json
 * macos/Runner/GoogleService-Info.plist
+* web/credentials/firebase.config.js [learn more](./web/credentials/README.md)
 
 
 ## initial setup
