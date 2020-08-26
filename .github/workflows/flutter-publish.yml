@@ -23,6 +23,7 @@ jobs:
         run: |
           cd app
           flutter pub run build_runner build --delete-conflicting-outputs
+          echo ${{FLUTTER_WEB_FIREBASE_CONFIG_JS_CONTENT}} > web/credentials/firebase.config.js
           flutter build web --release
       - name: deploy
         run: |
