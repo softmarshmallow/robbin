@@ -76,5 +76,8 @@
       "@app/test/(.*)": "<rootDir>/libs/test/src/$1",
       "@app/test": "<rootDir>/libs/test/src"
     }
+  },
+  "engines": {
+    "node": "v12.x"
   }
 }

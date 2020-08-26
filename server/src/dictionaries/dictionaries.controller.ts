@@ -24,12 +24,12 @@ export class DictionariesController {
     }
 
 
-    @Get('/idontknow')
-    listIdontknow() {
-
+    @Get('idontknow')
+    async listIdontknow(): Promise<any[]> {
+        return this.dictionariesService.findAll();
     }
 
-    @Post('/idontknow')
+    @Post('idontknow')
     registerIdontknow(
         @Body() Body
     ) {
