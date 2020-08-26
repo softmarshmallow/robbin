@@ -1,0 +1,102 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource postgresql {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// sense
+model Word {
+  id     Int      @default(autoincrement()) @id
+  // region meta
+  meta   WordMeta @relation(fields: [metaId], references: [token])
+  metaId String
+  @@index([metaId], name: "metaId")
+  // endregion meta
+  definitions      String[]
+  examples         String[]
+  shortDefinitions String[]
+  synonyms         String[]
+  domains          String[]
+  source           String
+}
+
+model WordMeta {
+  token        String     @id
+  locale       String
+  // region dictionary
+  dictionary   Dictionary @relation(fields: [dictionaryId], references: [id])
+  dictionaryId Int
+  @@index([dictionaryId], name: "dictionaryId")
+  // endregion dictionary
+  words     Word[]
+  notations UserWordNotation[] @relation("word")
+}
+
+model Dictionary {
+  id          Int     @default(autoincrement()) @id
+  name        String
+  description String?
+  cover       String?
+  avatar      String?
+  url         String  @unique
+  // region author
+  author      User    @relation(fields: [authorId], references: [uid], name: "author")
+  authorId    String
+  @@index([authorId], name: "authorId")
+  // endregion author
+  words      WordMeta[]
+  sharedWith User[]     @relation("sharedWith")
+  public     Boolean    @default(false)
+  createdAt          DateTime           @default(now())
+}
+
+model Profile {
+  id     Int     @default(autoincrement()) @id
+  bio    String?
+  avatar String?
+  user   User    @relation(fields: [userId], references: [uid])
+  userId String     @unique
+}
+
+enum NotationType {
+  DONT_KNOW
+  KNOW
+}
+
+model UserWordNotation {
+  id      Int          @default(autoincrement()) @id
+  word    WordMeta     @relation(fields: [wordId], references: [token], name: "word")
+  wordId  String
+  type    NotationType
+  User    User?        @relation(fields: [userUid], references: [uid])
+  userUid String?
+  createdAt          DateTime           @default(now())
+}
+
+enum UserType {
+  STUDENT
+  ROBOT
+  ADMIN
+  TUTOR
+}
+
+model User {
+  uid                String                @id
+  email              String?             @unique
+  name               String
+  type               UserType
+  profile            Profile?
+  notions            UserWordNotation[]
+  // my dictionary
+  dictionaries       Dictionary[]       @relation("author")
+  // shared with me
+  sharedDictionary   Dictionary?        @relation(fields: [sharedDictionaryId], references: [id], name: "sharedWith")
+  sharedDictionaryId Int?
+  createdAt          DateTime           @default(now())
+}
