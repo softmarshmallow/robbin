@@ -23,13 +23,14 @@ jobs:
         working-directory: app
         run: flutter pub get
       - name: make credentials
+        working-directory: app/web/credentials
         run: |
           touch firebase.config.js
           echo "$FBCJS_CONTENT" > firebase.config.js
         shell: bash
         env:
           FBCJS_CONTENT: ${{secrets.FLUTTER_WEB_FIREBASE_CONFIG_JS_CONTENT}}
-        working-directory: app/web/credentials
+
       - name: build web
         working-directory: app      
         run: |
