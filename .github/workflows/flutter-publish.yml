@@ -20,11 +20,12 @@ jobs:
         run: |
           cd app
           flutter pub get
+      - name: make credentials
+        run: echo ${{secrets.FLUTTER_WEB_FIREBASE_CONFIG_JS_CONTENT}} > app/web/credentials/firebase.config.js
       - name: build web
         run: |
           cd app
           flutter pub run build_runner build --delete-conflicting-outputs
-          echo ${{secrets.FLUTTER_WEB_FIREBASE_CONFIG_JS_CONTENT}} > web/credentials/firebase.config.js
           flutter build web --release
       - name: deploy
         run: |
