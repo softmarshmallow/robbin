@@ -17,19 +17,21 @@ jobs:
           channel: 'dev'
       - run: flutter config --enable-web
       - name: pub get
-        run: |
-          cd app
-          flutter pub get
+        working-directory: app
+        run: flutter pub get
       - name: make credentials
-        run: echo ${{secrets.FLUTTER_WEB_FIREBASE_CONFIG_JS_CONTENT}} > app/web/credentials/firebase.config.js
+        run: 'echo "$FBCJS_CONTENT" > app/web/credentials/firebase.config.js'
+        shell: bash
+        env:
+          FBCJS_CONTENT: ${{secrets.FLUTTER_WEB_FIREBASE_CONFIG_JS_CONTENT}}
       - name: build web
+        working-directory: app      
         run: |
-          cd app
           flutter pub run build_runner build --delete-conflicting-outputs
           flutter build web --release
       - name: deploy
+        working-directory: app        
         run: |
-          cd app
           cd build/web
           git init
           # type configurations: your user.email and user.name followed lines 
