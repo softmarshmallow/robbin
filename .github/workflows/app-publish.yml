@@ -4,7 +4,7 @@ on:
     branches:
       - master
     paths:
-      - 'app'
+      - 'app/'
       - '.github/workflows/app**.yml'
 jobs:
   build:
@@ -48,6 +48,7 @@ jobs:
           git status
           git remote add origin https://${{secrets.commit_secret}}@github.com/softmarshmallow/robbin.git
           git checkout -b gh-pages
+          git add credentials # add newly created credential files
           git add --all
           git commit -m "update"
           git push origin gh-pages -f
