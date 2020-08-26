@@ -1,0 +1,22 @@
+name: Server Heroku Deploy
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'server'
+      - '.github/workflows/server**.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.4.6 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "robbin-service" # https://dashboard.heroku.com/apps/robbin-service
+          heroku_email: "woojoo@softmarshmallow.com"
+          appdir: server
+          procfile: web: npm start
