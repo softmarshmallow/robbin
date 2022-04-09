@@ -17,7 +17,7 @@
     "@bridged.io/remote-ui-core": "^0.0.18",
     "chalk": "^4.1.0",
     "express": "^4.17.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "morgan": "^1.10.0",
     "dotenv": "^8.2.0",
     "cors": "^2.8.5",
