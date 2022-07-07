@@ -30,7 +30,7 @@
     "rimraf": "^3.0.2",
     "rxjs": "^6.5.4",
     "chalk": "^4.1.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "dotenv": "^8.2.0"
   },
   "devDependencies": {
