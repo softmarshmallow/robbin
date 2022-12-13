@@ -17,7 +17,7 @@
     "@bridged.io/express-response": "^0.0.5",
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "firebase-admin": "^8.10.0",
     "firebase-functions": "^3.6.1",
     "lexico-node": "^0.1.7"
